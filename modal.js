@@ -22,18 +22,18 @@ function modal(paras){
 		onOpen: function(dialog){
 			$(".youtube object").hide();
 			
-			dialog.overlay.fadeIn(400, function(){
+			dialog.overlay.fadeIn("fast", function(){
 				dialog.container.fadeIn(0, function(){
-					dialog.data.fadeIn(400, function(){
+					dialog.data.fadeIn("fast", function(){
 						
 					});
 				});
 			});
 		},
 		onClose: function(dialog){
-			dialog.data.fadeOut(400, function(){
-				dialog.container.fadeOut(400, function(){
-					dialog.overlay.fadeOut(400, function(){
+			dialog.data.fadeOut("fast", function(){
+				dialog.container.fadeOut("fast", function(){
+					dialog.overlay.fadeOut("fast", function(){
 						$.modal.close();
 						$(".youtube object").show();
 					});
