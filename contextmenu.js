@@ -27,6 +27,10 @@ function contextmenu_init(args){
 		menustyle["width"] = contextmenu_settings["width"];
 	}
 	
+	$.contextMenu.defaults({
+		menuStyle: menustyle
+	});
+	
 	for(var i in contextmenu_settings["menus"]){
 		val = contextmenu_settings["menus"][i];
 		
@@ -34,8 +38,4 @@ function contextmenu_init(args){
 			bindings: val["binding"]
 		});
 	}
-	
-	$.contextMenu.defaults({
-		menuStyle: menustyle
-	});
 }

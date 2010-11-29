@@ -1,4 +1,12 @@
 function box(args){
+	if (args["width"]){
+		knjbox.css("width", args["width"]);
+	}
+	
+	if (args["height"]){
+		knjbox.css("height", args["height"]);
+	}
+	
 	if (args["url"]){
 		if (args["loading"]){
 			if (args["width"]){
