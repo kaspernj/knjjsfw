@@ -43,3 +43,22 @@ function flexigrid_fix_buttons(){
 	$(".fbutton span.input_button").css("padding-left", "0px");
 	$(".fbutton span.input_button").css("padding", "2px 15px 2px 15px");
 }
+
+function flexigrid_autosave(table_ele, callback){
+	root_ele = table_ele.parent().parent().parent();
+	$("select[name=rp]", root_ele).change(function(){
+		setTimeout(function(){
+			callback.call(table_ele);
+		}, 250);
+	});
+	
+	in_col_eles = $(".togCol", root_ele.parent().parent().parent());
+	in_col_eles.each(function(no, raw_ele){
+		ele = $(raw_ele);
+		ele.parent().parent().click(function(){
+			setTimeout(function(){
+				callback.call(table_ele);
+			}, 250);
+		});
+	});
+}

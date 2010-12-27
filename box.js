@@ -49,6 +49,10 @@ function box(args){
 	knjbox.stop();
 	knjbox.html(args["content"]);
 	knjbox.fadeTo("fast", 1);
+	
+	if (args["event"]){
+		box_update(args["event"]);
+	}
 }
 
 function box_update(event){
@@ -156,7 +160,7 @@ function box_update(event){
 
 function box_hide(){
 	knjbox.stop();
-	knjbox.fadeTo(150, 0, function(){
+	knjbox.fadeTo("fast", 0, function(){
 		knjbox.html("");
 		knjbox.css("top", "0px");
 		knjbox.css("left", "0px");

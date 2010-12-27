@@ -17,8 +17,14 @@ function select_movedown(sel){
 function select_values(args){
 	val = "";
 	
+	findstr = "option";
+	
+	if (args["selected"]){
+		findstr += ":selected";
+	}
+	
 	first = true;
-	$(args["sel"]).find("option").each(function(){
+	$(args["sel"]).find(findstr).each(function(){
 		if (first){
 			first = false;
 		}else{
