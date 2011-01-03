@@ -49,6 +49,7 @@ function box(args){
 	knjbox.stop();
 	knjbox.html(args["content"]);
 	knjbox.fadeTo("fast", 1);
+	knjbox_args["shown"] = true;
 	
 	if (args["event"]){
 		box_update(args["event"]);
@@ -56,6 +57,10 @@ function box(args){
 }
 
 function box_update(event){
+	if (!knjbox_args["shown"]){
+		return null;
+	}
+	
 	if ($.browser.webkit){
 		scroll_top = document.body.scrollTop;
 		scroll_left = document.body.scrollLeft;
@@ -159,6 +164,7 @@ function box_update(event){
 }
 
 function box_hide(){
+	knjbox_args["shown"] = false;
 	knjbox.stop();
 	knjbox.fadeTo("fast", 0, function(){
 		knjbox.html("");
