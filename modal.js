@@ -81,7 +81,6 @@ function modal(args){
 	if (args["title"]){
 		realcontent += "<div class=\"simplemodal_header\">";
 		realcontent += "<div style=\"float: right; font-size: 9px; font-weight: normal; padding-top: 5px;\"><a href=\"javascript: modalClose();\">[" + locale_strings["close"] + "]</a></div>";
-		
 		realcontent += args["title"] + "</div>";
 	}
 	
@@ -97,9 +96,9 @@ function modal_setup(args){
 	script.type = "text/javascript";
 	
 	if (args["url"]){
-		script.src = args["url"] + "/includes/jquery.simplemodal-1.3.5.min.js";
+		script.src = args["url"] + "/includes/jquery.simplemodal.1.4.1.min.js";
 	}else{
-		script.src = "https://www.kaspernj.org/js/includes/jquery.simplemodal-1.3.5.min.js";
+		script.src = "https://www.kaspernj.org/js/includes/jquery.simplemodal.1.4.1.min.js";
 	}
 	
 	sh = ""
