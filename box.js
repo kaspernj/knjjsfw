@@ -1,4 +1,6 @@
 function box(args){
+	knjbox_args["shown"] = true;
+	
 	if (args["width"]){
 		knjbox.css("width", args["width"]);
 	}
@@ -49,7 +51,6 @@ function box(args){
 	knjbox.stop();
 	knjbox.html(args["content"]);
 	knjbox.fadeTo("fast", 1);
-	knjbox_args["shown"] = true;
 	
 	if (args["event"]){
 		box_update(args["event"]);
@@ -166,19 +167,21 @@ function box_update(event){
 function box_hide(){
 	knjbox_args["shown"] = false;
 	knjbox.stop();
-	knjbox.fadeTo("fast", 0, function(){
+	knjbox.fadeOut("fast", function(){
 		knjbox.html("");
 		knjbox.css("top", "0px");
 		knjbox.css("left", "0px");
-		knjbox_args = {
-			width: 0,
-			height: 0,
-			animating_left: false,
-			animating_top: false,
-			reverse_top: false,
-			reverse_left: false
-		};
 	});
+	
+	knjbox_args = {
+		width: 0,
+		height: 0,
+		animating_left: false,
+		animating_top: false,
+		reverse_top: false,
+		reverse_left: false,
+		shown: false
+	};
 }
 
 var knjbox = "";
@@ -188,7 +191,8 @@ var knjbox_args = {
 	animating_left: false,
 	animating_top: false,
 	reverse_top: false,
-	reverse_left: false
+	reverse_left: false,
+	shown: false
 };
 
 $(document).ready(function(){
