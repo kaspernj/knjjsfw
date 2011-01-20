@@ -96,9 +96,9 @@ function modal_setup(args){
 	script.type = "text/javascript";
 	
 	if (args["url"]){
-		script.src = args["url"] + "/includes/jquery.simplemodal.1.4.1.min.js";
+		script.src = args["url"] + "/includes/jquery.simplemodal-1.4.1.js";
 	}else{
-		script.src = "https://www.kaspernj.org/js/includes/jquery.simplemodal.1.4.1.min.js";
+		script.src = "https://www.kaspernj.org/js/includes/jquery.simplemodal-1.4.1.js";
 	}
 	
 	sh = ""

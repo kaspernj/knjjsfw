@@ -35,7 +35,13 @@ function contextmenu_init(args){
 		val = contextmenu_settings["menus"][i];
 		
 		$(i).contextMenu(val["menu"], {
-			bindings: val["binding"]
+			bindings: val["binding"],
+			shadow: false
 		});
 	}
+	
+	//Hack to force the context-menu to actually close - knj.
+	$("div#jqContextMenu").click(function(){
+		$("div#jqContextMenu").hide();
+	});
 }
