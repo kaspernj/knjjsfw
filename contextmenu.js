@@ -45,3 +45,7 @@ function contextmenu_init(args){
 		$("div#jqContextMenu").hide();
 	});
 }
+
+function contextmenu_close(){
+	$("div#jqContextMenu").hide();
+}
