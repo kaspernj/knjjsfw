@@ -62,3 +62,7 @@ function flexigrid_autosave(table_ele, callback){
 		});
 	});
 }
+
+function flexigrid_search_input(ele){
+	return $("input.qsbox[name=q]", $(ele).parent().parent());
+}
