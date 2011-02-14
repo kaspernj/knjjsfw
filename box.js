@@ -1,5 +1,6 @@
 function box(args){
 	knjbox_args["shown"] = true;
+	treat_box = true;
 	
 	if (args["width"]){
 		knjbox.css("width", args["width"]);
@@ -23,8 +24,7 @@ function box(args){
 				knjbox_args["height"] = 150;
 			}
 			
-			ajaxargs = {type: "GET", url: args["url"], cache: false, async: true,
-				complete: function(data){
+			ajaxargs = {type: "GET", url: args["url"], cache: false, async: true, complete: function(data){
 					$("#box_content", knjbox).html(data.responseText);
 					$("#box_loading", knjbox).slideUp("fast", function(){
 						$("#box_content", knjbox).slideDown("fast", function(){
@@ -32,17 +32,14 @@ function box(args){
 							knjbox_args["height"] = knjbox.height();
 						});
 					});
-				}
-			};
+			}};
 			args["content"] = "<div style=\"display: none;\" id=\"box_content\"></div><div id=\"box_loading\">Loading...</div>";
 		}else{
-			ajaxargs = {type: "GET", url: args["url"], cache: false, async: false,
-				complete: function(data){
-					args["content"] = data.responseText;
-					knjbox_args["width"] = knjbox.width();
-					knjbox_args["height"] = knjbox.height();
-				}
-			};
+			ajaxargs = {type: "GET", url: args["url"], cache: false, async: false, complete: function(data){
+				args["content"] = data.responseText;
+				knjbox_args["width"] = knjbox.width();
+				knjbox_args["height"] = knjbox.height();
+			}};
 		}
 		
 		$.ajax(ajaxargs);

@@ -66,3 +66,7 @@ function flexigrid_autosave(table_ele, callback){
 function flexigrid_search_input(ele){
 	return $("input.qsbox[name=q]", $(ele).parent().parent());
 }
+
+function flexigrid_page_input(ele){
+	return $("span.pcontrol input[type=text]", $(ele).parent().parent());
+}
