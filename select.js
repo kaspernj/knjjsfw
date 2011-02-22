@@ -36,3 +36,8 @@ function select_values(args){
 	
 	return val;
 }
+
+function select_prepend(sel, val, cont){
+	ele = new Option(cont, val, true, false);
+	sel.get(0).options[sel.get(0).options.length] = ele;
+}
