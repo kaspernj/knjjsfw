@@ -1,12 +1,38 @@
+var knj_modal = {}
+
 function modalClose(){
-	$.modal.close();
+	modal_close();
 }
 
 function modal_close(){
+	knj_modal["closing"] = true;
 	$.modal.close();
 }
 
+function modal_on_opened(func){
+	if (!knj_modal["on_opened"]){
+		knj_modal["on_opened"] = []
+	}
+	
+	knj_modal["on_opened"].push(func);
+}
+
 function modal(args){
+	if (knj_modal["closing"]){
+		setTimeout(function(){
+			modal(args);
+		}, 50);
+		return null;
+	}
+	
+	if (modal_isopen()){
+		modal_close();
+		setTimeout(function(){
+			modal(args);
+		}, 50);
+		return null;
+	}
+	
 	if (!args["width"]){
 		args["width"] = "640px";
 	}
@@ -25,7 +51,12 @@ function modal(args){
 			dialog.overlay.fadeIn("fast", function(){
 				dialog.container.fadeIn(0, function(){
 					dialog.data.fadeIn("fast", function(){
-						
+						if (knj_modal["on_opened"]){
+							$.each(knj_modal["on_opened"], function(key, ele){
+								knj_modal["on_opened"].splice(ele);
+								ele.call();
+							});
+						}
 					});
 				});
 			});
@@ -35,6 +66,7 @@ function modal(args){
 				dialog.container.fadeOut("fast", function(){
 					dialog.overlay.fadeOut("fast", function(){
 						$.modal.close();
+						knj_modal["closing"] = false;
 						$(".youtube object").show();
 					});
 				});
@@ -88,6 +120,15 @@ function modal(args){
 	realcontent += "</div>";
 	
 	$(realcontent).modal(modal_opts);
+}
+
+function modal_isopen(){
+	modal_ele = $("div#simplemodal_box");
+	if (modal_ele.length > 0){
+		return modal_ele;
+	}
+	
+	return false;
 }
 
 function modal_setup(args){
