@@ -35,22 +35,40 @@ function box(args){
 			}};
 			args["content"] = "<div style=\"display: none;\" id=\"box_content\"></div><div id=\"box_loading\">Loading...</div>";
 		}else{
-			ajaxargs = {type: "GET", url: args["url"], cache: false, async: false, complete: function(data){
-				args["content"] = data.responseText;
-				knjbox_args["width"] = knjbox.width();
-				knjbox_args["height"] = knjbox.height();
-			}};
+			if (args["async"]){
+				ajaxargs = {type: "GET", url: args["url"], cache: false, async: true, complete: function(data){
+					args["content"] = data.responseText;
+					knjbox_args["width"] = knjbox.width();
+					knjbox_args["height"] = knjbox.height();
+					
+					knjbox.stop();
+					knjbox.html(args["content"]);
+					knjbox.fadeTo("fast", 1);
+					
+					if (args["event"]){
+						box_update(args["event"]);
+					}
+				}};
+			}else{
+				ajaxargs = {type: "GET", url: args["url"], cache: false, async: false, complete: function(data){
+					args["content"] = data.responseText;
+					knjbox_args["width"] = knjbox.width();
+					knjbox_args["height"] = knjbox.height();
+				}};
+			}
 		}
 		
 		$.ajax(ajaxargs);
 	}
 	
-	knjbox.stop();
-	knjbox.html(args["content"]);
-	knjbox.fadeTo("fast", 1);
-	
-	if (args["event"]){
-		box_update(args["event"]);
+	if (!args["async"]){
+		knjbox.stop();
+		knjbox.html(args["content"]);
+		knjbox.fadeTo("fast", 1);
+		
+		if (args["event"]){
+			box_update(args["event"]);
+		}
 	}
 }
 
