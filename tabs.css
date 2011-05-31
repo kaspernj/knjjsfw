@@ -47,4 +47,5 @@ div.knjtabs div.knjtabs_container{
 	overflow: hidden;
 	background-color: #fff;
 	padding: 6px;
+	clear: both;
 }
