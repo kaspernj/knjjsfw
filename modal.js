@@ -54,7 +54,10 @@ function modal(args){
 						if (knj_modal["on_opened"]){
 							$.each(knj_modal["on_opened"], function(key, ele){
 								knj_modal["on_opened"].splice(ele);
-								ele.call();
+								
+								if (ele){
+                  ele.call();
+                }
 							});
 						}
 					});
