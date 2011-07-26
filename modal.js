@@ -92,21 +92,14 @@ function modal(args){
 	tha_style = "";
 	if (args["width"]){
 		tha_style += "width: " + args["width"] + ";";
-		
-		if (navigator.appName == "Microsoft Internet Explorer"){
-			xpos = (document.documentElement.clientWidth / 2) - (parseInt(args["width"]) / 2);
-		}else{
-			xpos = (window.innerWidth / 2) - (parseInt(args["width"]) / 2);
-		}
+		win_width = $(document).width();
+    xpos = (win_width / 2) - (parseInt(args["width"]) / 2);
 	}
+	
 	if (args["height"]){
 		tha_style += "height: " + args["height"] + ";";
-		
-		if (navigator.appName == "Microsoft Internet Explorer"){
-			ypos = (document.documentElement.clientHeight / 2) - (parseInt(args["height"]) / 2);
-		}else{
-			ypos = (window.innerHeight / 2) - (parseInt(args["height"]) / 2);
-		}
+		win_height = $(window).height();
+		ypos = (win_height / 2) - (parseInt(args["height"]) / 2);
 		
 		modal_opts["position"] = [ypos, xpos];
 	}
