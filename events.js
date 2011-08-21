@@ -14,7 +14,7 @@ Events.prototype.add_event = function(data){
 Events.prototype.call = function(name, args){
   if (this.connects[name]){
     for(key in this.connects[name]){
-      this.connects[name][key].call();
+      this.connects[name][key].call(null, args);
     }
   }
 }
