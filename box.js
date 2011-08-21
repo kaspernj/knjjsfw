@@ -210,6 +210,15 @@ var knjbox_args = {
 	shown: false
 };
 
+function box_reload_css(){
+  $(".knjbox").mousemove(function(event){
+    box_update(event);
+  });
+  $(".knjbox").mouseout(function(){
+    box_hide();
+  });
+}
+
 $(document).ready(function(){
 	$("body").prepend("<div id=\"knjbox\"></div>");
 	knjbox = $("#knjbox");
@@ -225,12 +234,7 @@ $(document).ready(function(){
 	
 	knjbox.fadeOut(0);
 	
-	$(".knjbox").mousemove(function(event){
-		box_update(event);
-	});
-	$(".knjbox").mouseout(function(){
-		box_hide();
-	});
+	box_reload_css();
 });
 
 $(window).unload(function(){
