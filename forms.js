@@ -7,5 +7,14 @@ function forms_inputs_read(form_ele){
     }
   });
   
+  $("iframe", form_ele).each(function(){
+    match = this.id.match(/^(.+)___Frame$/);
+    
+    if (match){
+      fck = FCKeditorAPI.GetInstance(match[1]);
+      data[match[1]] = fck.GetHTML();
+    }
+  });
+  
   return data;
 }
