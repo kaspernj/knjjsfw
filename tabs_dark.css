@@ -24,31 +24,30 @@ div.knjtabs ul li{
 	border-left: none;
   margin: 0;
 	overflow: hidden;
-	background: #e0e0e0;
+	background: #202020;
 }
 
 div.knjtabs ul li a{
 	text-decoration: none;
-	color: #000;
+	color: #fff;
 	display: block;
 	padding: 0 20px;
-	border: 1px solid #fff;
 	outline: none;
 }
 
 div.knjtabs ul li a:hover{
-	background: #ccc;
+	background: #000000;
 }
 
 div.knjtabs ul li.active, div.knjtabs ul li.active a:hover{
-	background: #fff;
-	border-bottom: 1px solid #fff;
+	background: #0f0f0f;
+  border-bottom: 1px solid #0f0f0f;
 }
 
 div.knjtabs div.knjtabs_container{
 	border: 1px solid #999;
 	overflow: hidden;
-	background-color: #fff;
+	background-color: #0f0f0f;
 	padding: 6px;
 	clear: both;
 }
