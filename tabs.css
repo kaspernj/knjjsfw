@@ -1,23 +1,27 @@
+div.knjtabs{
+  position: relative;
+}
+
 div.knjtabs ul{
+  top: -1px;
+  position: absolute;
 	margin: 0;
 	padding: 0;
 	float: left;
 	list-style: none;
 	height: 32px;
-	border-bottom: 1px solid #999;
 	border-left: 1px solid #999;
 	width: 100%;
 }
 
 div.knjtabs ul li{
 	float: left;
-	margin: 0;
 	padding: 0;
 	height: 31px;
 	line-height: 31px;
 	border: 1px solid #999;
 	border-left: none;
-	margin-bottom: -1px;
+  margin: 0;
 	overflow: hidden;
 	position: relative;
 	background: #e0e0e0;
@@ -43,7 +47,6 @@ div.knjtabs ul li.active, div.knjtabs ul li.active a:hover{
 
 div.knjtabs div.knjtabs_container{
 	border: 1px solid #999;
-	border-top: none;
 	overflow: hidden;
 	background-color: #fff;
 	padding: 6px;

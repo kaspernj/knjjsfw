@@ -70,3 +70,27 @@ function flexigrid_search_input(ele){
 function flexigrid_page_input(ele){
 	return $("span.pcontrol input[type=text]", $(ele).parent().parent());
 }
+
+function flexigrid_sort(ele, callback){
+  parent_ele = $(ele).parent().parent();
+  
+  $("th", parent_ele).each(function(){
+    if (this.axis.match(/^col(\d+)$/)){
+      $(this).click(function(){
+        callback.call();
+      });
+    }
+  });
+}
+
+function flexigrid_change_page(ele, page_no){
+  parent_ele = $(ele).parent().parent();
+  
+  input_ele = $(".pcontrol > input");
+  input_ele.val(page_no);
+  
+  ele.flexOptions({newp: page_no});
+  ele.flexReload();
+  
+  $("#testtextarea").val(parent_ele.html());
+}
