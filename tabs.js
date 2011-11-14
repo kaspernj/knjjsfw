@@ -64,6 +64,10 @@ function knjtabs_init(){
       $("a", $(this).parent().parent()).each(function(){
         cont_ele_id = $(this).attr("href").substring(1);
         cont_ele = $("#" + cont_ele_id);
+        if (cont_ele.length <= 0){
+          throw "Could not element by ID: " + cont_ele_id;
+        }
+        
         cont_ele.slideUp("fast", function(){
           eles_finished += 1;
           
