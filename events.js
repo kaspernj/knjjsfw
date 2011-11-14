@@ -12,9 +12,13 @@ Events.prototype.add_event = function(data){
 }
 
 Events.prototype.call = function(name, args){
+  if (!args){
+    args = []
+  }
+  
   if (this.connects[name]){
     for(key in this.connects[name]){
-      this.connects[name][key].call(null, args);
+      this.connects[name][key].apply(null, args);
     }
   }
 }

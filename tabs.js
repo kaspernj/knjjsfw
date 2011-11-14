@@ -1,4 +1,4 @@
-function knjtabs_init(){
+function knjtabs_init(args){
   //Find out if an active tab is given in the URL.
   match = ("" + window.location).match(/\#(.+)/);
   
@@ -42,6 +42,12 @@ function knjtabs_init(){
     
     if (active && active == cont_ele_id){
       li_ele.addClass("active");
+      
+      if (args && args.onload && args.onload[cont_ele_id]){
+        setTimeout(function(){
+          args.onload[cont_ele_id]();
+        }, 25);
+      }
     }else if (!li_ele.hasClass("active") || (!active && !li_ele.hasClass("active")) || (active && active != cont_ele_id)){
       li_ele.removeClass("active");
       cont_ele.slideUp(0);
@@ -64,6 +70,7 @@ function knjtabs_init(){
       $("a", $(this).parent().parent()).each(function(){
         cont_ele_id = $(this).attr("href").substring(1);
         cont_ele = $("#" + cont_ele_id);
+        
         if (cont_ele.length <= 0){
           throw "Could not element by ID: " + cont_ele_id;
         }
@@ -72,7 +79,13 @@ function knjtabs_init(){
           eles_finished += 1;
           
           if (eles_finished >= eles){
-            eles_cur_ele.slideDown("fast");
+            eles_cur_ele.slideDown("fast", function(){
+              if (args && args.onload && args.onload[eles_cur_id]){
+                setTimeout(function(){
+                  args.onload[eles_cur_id].call();
+                }, 25);
+              }
+            });
           }
         });
       });
