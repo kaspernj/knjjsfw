@@ -48,6 +48,13 @@ function knjtabs_init(args){
           args.onload[cont_ele_id]();
         }, 25);
       }
+      
+      if (args && args.content_url && args.content_url[cont_ele_id] && !cont_ele.get(0).html_loaded){
+        cont_ele.get(0).html_loaded = true;
+        $.ajax({type: "GET", url: args.content_url[cont_ele_id], cache: false, async: false, complete: function(data){
+          cont_ele.html(data.responseText);
+        }});
+      }
     }else if (!li_ele.hasClass("active") || (!active && !li_ele.hasClass("active")) || (active && active != cont_ele_id)){
       li_ele.removeClass("active");
       cont_ele.slideUp(0);
@@ -59,6 +66,13 @@ function knjtabs_init(args){
       eles_cur = $(this);
       eles_cur_id = eles_cur.attr("href").substring(1);
       eles_cur_ele = $("#" + eles_cur_id);
+      
+      if (args && args.content_url && args.content_url[eles_cur_id] && !eles_cur_ele.get(0).html_loaded){
+        eles_cur_ele.get(0).html_loaded = true;
+        $.ajax({type: "GET", url: args.content_url[eles_cur_id], cache: false, async: false, complete: function(data){
+          eles_cur_ele.html(data.responseText);
+        }});
+      }
       
       $("a", $(this).parent().parent()).each(function(){
         $("li", $(this).parent().parent()).removeClass("active");
