@@ -134,6 +134,8 @@ function modal_setup(args){
 	
 	if (args["url"]){
 		script.src = args["url"] + "/includes/jquery.simplemodal-1.4.1.js";
+  }else if(typeof(knjjsfw) != "undefined" && knjjsfw["url"]){
+    script.src = knjjsfw["url"] + "/includes/jquery.simplemodal-1.4.1.js";
 	}else{
 		script.src = "https://www.kaspernj.org/js/includes/jquery.simplemodal-1.4.1.js";
 	}
